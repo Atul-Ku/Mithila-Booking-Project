@@ -1,10 +1,14 @@
 const express = require('express');
 const dotenv = require('dotenv');
-const connectDB = require('./config/db');
-// const userRoutes = require('./routes/userRoutes');
-const adminRoutes = require('./routes/adminRoutes');
+const connectDB = require('./Config/db');
 const bookingRoutes = require('./routes/bookingRoutes');
-const bodyParser = require('body-parser');
+const adminRoutes= require('./routes/authRoutes');
+const bannerRoutes= require('./routes/bannerRoutes');
+const eventRoutes = require('./routes/eventRoutes');
+const categoryRoutes =  require('./routes/categoryRoutes');
+const vanRoutes = require('./routes/vanRoutes');
+const driverRoutes = require('./routes/driverRoutes');
+const tripRoutes = require('./routes/tripRoutes');
 
 dotenv.config();
 connectDB();
@@ -18,15 +22,14 @@ app.use(express.json());
 // Define Routes
 
 // app.use('/api/users', userRoutes);
-app.use('/api/admin', adminRoutes);
 app.use('/api/bookings', bookingRoutes);
-app.use('/api/auth', require('./routes/authRoutes'));
-app.use('/api/banners', require('./routes/bannerRoutes'));
-app.use('/api/events', require('./routes/eventRoutes'));
-app.use('/api/categories', require('./routes/categoryRoutes'));
-app.use('/api/vans', require('./routes/vanRoutes'));
-app.use('/api/drivers', require('./routes/driverRoutes'));
-app.use('/api/trips', require('./routes/tripRoutes'));
+app.use('/api/Admin', adminRoutes);
+app.use('/api/banners', bannerRoutes);
+app.use('/api/events', eventRoutes);
+app.use('/api/categories', categoryRoutes);
+app.use('/api/vans', vanRoutes);
+app.use('/api/drivers', driverRoutes);
+app.use('/api/trips', tripRoutes);
 
 const PORT = process.env.PORT || 5000;
 
