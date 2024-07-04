@@ -1,9 +1,10 @@
 const express = require('express');
 const { addBooking } = require('../controllers/bookingController');
-const { protect } = require('../middleware/authMiddleware');
+// const { protect } = require('../middleware/authMiddleware');
+const {login} = require('../middleware/AdminauthMiddleware');
 
 const router = express.Router();
 
-router.post('/', protect, addBooking);
+router.post('/', login , addBooking);
 
 module.exports = router;
