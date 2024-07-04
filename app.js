@@ -1,5 +1,6 @@
 const express = require('express');
 const dotenv = require('dotenv');
+const cors=require("cors");
 const connectDB = require('./Config/db');
 const bookingRoutes = require('./routes/bookingRoutes');
 const adminRoutes= require('./routes/authRoutes');
@@ -9,15 +10,18 @@ const categoryRoutes =  require('./routes/categoryRoutes');
 const vanRoutes = require('./routes/vanRoutes');
 const driverRoutes = require('./routes/driverRoutes');
 const tripRoutes = require('./routes/tripRoutes');
+const corsOptions = require('./Config/interact');
+
 
 dotenv.config();
 connectDB();
 
 const app = express();
 
+// Initial Middleware.
 app.use(express.json());
-// app.use()
-// app.use(express.json({ extended: false }));
+app.use(express.urlencoded({ extended: true }));
+app.use(cors(corsOptions));
 
 // Define Routes
 
