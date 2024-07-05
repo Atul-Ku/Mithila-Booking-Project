@@ -3,6 +3,7 @@ const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const config = require('config');
 const nodemailer = require('nodemailer');
+const jwtSecret = process.env.JWT_SECRET;
 
 exports.login = async (req, res) => {
     const { email, password } = req.body;
@@ -24,7 +25,7 @@ exports.login = async (req, res) => {
             }
         };
 
-        jwt.sign(payload, config.get('JWT_SECRET'), { expiresIn: '24h' }, (err, token) => {
+        jwt.sign(payload, jwtSecret , { expiresIn: '24h' }, (err, token) => {
             if (err) throw err;
             res.json({ token });
         });
@@ -43,7 +44,7 @@ exports.forgetPassword = async (req, res) => {
             return res.status(400).json({ msg: 'Email does not exist' });
         }
 
-        const token = jwt.sign({ id: admin.id }, config.get('jwtSecret'), { expiresIn: '1h' });
+        const token = jwt.sign({ id: admin.id }, jwtSecret , { expiresIn: '1h' });
 
         // Send email with token
         const transporter = nodemailer.createTransport({

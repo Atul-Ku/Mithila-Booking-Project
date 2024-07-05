@@ -8,7 +8,6 @@ const CategorySchema = new mongoose.Schema({
     subCategories: [{
         name: {
             type: String,
-            required: true
         },
         vanInfo: {
             name: String,

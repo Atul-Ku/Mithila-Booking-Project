@@ -6,7 +6,10 @@ const bookingRoutes = require('./routes/bookingRoutes');
 const adminRoutes= require('./routes/authRoutes');
 const bannerRoutes= require('./routes/bannerRoutes');
 const eventRoutes = require('./routes/eventRoutes');
-const categoryRoutes =  require('./routes/categoryRoutes');
+const oneWayRoutes = require('./routes/oneWayRoutes');
+const roundRoutes = require('./routes/roundWayRoutes');
+const rentalRoutes = require('./routes/rentalRoutes');
+const airportRoutes = require('./routes/airportRoutes');
 const vanRoutes = require('./routes/vanRoutes');
 const driverRoutes = require('./routes/driverRoutes');
 const tripRoutes = require('./routes/tripRoutes');
@@ -25,12 +28,15 @@ app.use(cors(corsOptions));
 
 // Define Routes
 
-// app.use('/api/users', userRoutes);
+
 app.use('/api/bookings', bookingRoutes);
 app.use('/api/Admin', adminRoutes);
 app.use('/api/banners', bannerRoutes);
 app.use('/api/events', eventRoutes);
-app.use('/api/categories', categoryRoutes);
+app.use('/api/oneWay', oneWayRoutes);
+app.use('/api/roundWay', roundRoutes);
+app.use('/api/rental', rentalRoutes);
+app.use('/api/airport', airportRoutes);
 app.use('/api/vans', vanRoutes);
 app.use('/api/drivers', driverRoutes);
 app.use('/api/trips', tripRoutes);
